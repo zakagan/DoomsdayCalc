@@ -50,16 +50,16 @@ For a detailed xplaination on the method, [please read these lecture notes from 
 
 ## Notes on holidays
 
-Holidays strings can be provided using any number of keywords. Strings are searched for appropriate key words and the proper holidays are added to the queue of DoomsdayDate objects. The strings are not cap sensitive, and shorthand 3 letter abbreviations can be used instead of a holiday's full name.
+Holidays strings can be provided using any number of keywords. Strings are searched for appropriate key words and the proper holidays are added to the queue of DoomsdayDate objects. The strings are not cap sensitive (in fact, all non-letter chars are stripped before searching), and shorthand 3 letter abbreviations can be used instead of a holiday's full name.
 
 The following Holidays are implemented:
 
 1. **New Year's Day**
 
-    **keyword**: "New Years" or just "nyd"
+    **keyword**: "New Years" or just "nyd"  
     **range**: Every year has a New Year's Day
 
-2. **New Year's Day**
+2. **Ground Hog Day**
 
-    **keyword**: "New Years" or just "nyd"
-    **range**: Every year has a New Year's Day
+    **keyword**: "Ground Hog" or just "ghd"  
+    **range**: Every year since 1887 has a Ground Hog Day
