@@ -76,103 +76,103 @@ The following Holidays are implemented:
 
 1. **New Year's Day**
 
-    **keyword**: "New Years" or just "nyd"  
-    **occurs**: January 1st  
-    **range**: Every year has a New Year's Day
+    * **keyword**: "New Years" or just "nyd"  
+    * **occurs**: January 1st  
+    * **range**: Every year has a New Year's Day
 
 2. **Martin Luther King Jr. Day**
 
-    **keyword**: "Martin Luther King" or just "mlk"  
-    **occurs**: 3rd Monday in January  
-    **range**: Every year since 1986
+    * **keyword**: "Martin Luther King" or just "mlk"  
+    * **occurs**: 3rd Monday in January  
+    * **range**: Every year since 1986
     
 3. **Ground Hog Day**
 
-    **keyword**: "Ground Hog" or just "ghd"  
-    **occurs**: Febuary 2nd  
-    **range**: Every year since 1887
+    * **keyword**: "Ground Hog" or just "ghd"  
+    * **occurs**: Febuary 2nd  
+    * **range**: Every year since 1887
     
 4. **Valentine's Day**
 
-    **keyword**: "Valentines" or "valentine" or just "vld"  
-    **occurs**: Febuary 14th  
-    **range**: Every year since 496 (using a loose interpretation of the Valentine's celebration)
+    * **keyword**: "Valentines" or "valentine" or just "vld"  
+    * **occurs**: Febuary 14th  
+    * **range**: Every year since 496 (using a loose interpretation of the Valentine's celebration)
     
 5. **Washington's Birthday (President's Day)**
 
-    **keyword**: "Washington" or "Lincoln" or "president" or just "wbd"  
-    **occurs**: 3rd Monday in Feburary  
-    **range**: Every year since 1971
+    * **keyword**: "Washington" or "Lincoln" or "president" or just "wbd"  
+    * **occurs**: 3rd Monday in Feburary  
+    * **range**: Every year since 1971
     
 6. **Leap Day**
 
-    **keyword**: "Leap Day" or "leap" or just "lpd"  
-    **occurs**: Feburary 29th  
-    **range**: In Gregorian calander, every four years except every year divisible by 100, but including years divisible by both 100 and 400. In the Julian calander it is simply every four years.
+    * **keyword**: "Leap Day" or "leap" or just "lpd"  
+    * **occurs**: Feburary 29th  
+    * **range**: In Gregorian calander, every four years except every year divisible by 100, but including years divisible by both 100 and 400. In the Julian calander it is simply every four years.
     
 7. **Good Friday**
 
-    **keyword**: "Good Friday" or just "gfd"  
-    **occurs**: A Friday between March 20th and April 23rd, two days before Easter.  
-    **range**: Every year since 325 AD, the First Council of Nicaea.
+    * **keyword**: "Good Friday" or just "gfd"  
+    * **occurs**: A Friday between March 20th and April 23rd, two days before Easter.  
+    * **range**: Every year since 325 AD, the First Council of Nicaea.
         
 8. **Easter**
 
-    **keyword**: "Easter" or just "est"  
-    **occurs**: A Sunday between March 22th and April 25rd  
-    **range**: Every year since 325 AD, the First Council of Nicaea.  
-    **note**: Easter is calculated using John Conway's algorithm
+    * **keyword**: "Easter" or just "est"  
+    * **occurs**: A Sunday between March 22th and April 25rd  
+    * **range**: Every year since 325 AD, the First Council of Nicaea.  
+    * **note**: Easter is calculated using John Conway's algorithm
     
 9. **Passover**
 
-    **keyword**: "Passover" or just "psv"  
-    **occurs**: Between March 26th and April 25th   
-    **range**: Every year since 3760 BC, first year of the Jewish calander  
-    **note**: Based on that year's Rosh Hashanah. Starts the sundown before reported date.
+    * **keyword**: "Passover" or just "psv"  
+    * **occurs**: Between March 26th and April 25th   
+    * **range**: Every year since 3760 BC, first year of the Jewish calander  
+    * **note**: Based on that year's Rosh Hashanah. Starts the sundown before reported date.
     
 10. **Memorial Day**
 
-    **keyword**: "Memorial" or just "mrd"  
-    **occurs**: Last Monday in May since 1971, and May 30th every year from 1868 before that  
-    **range**: Every year since 1868, later standardized to Monday by the Uniform Monday Holiday Act
+    * **keyword**: "Memorial" or just "mrd"  
+    * **occurs**: Last Monday in May since 1971, and May 30th every year from 1868 before that  
+    * **range**: Every year since 1868, later standardized to Monday by the Uniform Monday Holiday Act
     
 11. **Independence Day**
 
-    **keyword**: "Independence" or just "ipd"  
-    **occurs**: July 4th  
-    **range**: Every year since 1776
+    * **keyword**: "Independence" or just "ipd"  
+    * **occurs**: July 4th  
+    * **range**: Every year since 1776
     
 12. **Labor Day**
 
-    **keyword**: "Labor" or just "lbd"  
-    **occurs**: First Monday in September  
-    **range**: Every year since 1882
+    * **keyword**: "Labor" or just "lbd"  
+    * **occurs**: First Monday in September  
+    * **range**: Every year since 1882
     
 13. **Rosh Hashanah**
 
-    **keyword**: "Rosh" or "Hashanah" or just "rsh"  
-    **occurs**: Between September 5th and October 5th  
-    **range**: Every year since 3760 BC, first year of the Jewish calander  
-    **note**: Calculated using a variation of Gauss's method. Starts the sundown before reported date.
+    * **keyword**: "Rosh" or "Hashanah" or just "rsh"  
+    * **occurs**: Between September 5th and October 5th  
+    * **range**: Every year since 3760 BC, first year of the Jewish calander  
+    * **note**: Calculated using a variation of Gauss's method. Starts the sundown before reported date.
     
 14. **Yom Kippur**
 
-    **keyword**: "Rosh" or "Hashanah" or just "rsh"  
-    **occurs**: Between September 14th and October 14th  
-    **range**: Every year since 3760 BC, first year of the Jewish calander  
-    **note**: 9 days after Rosh Hashanah. Starts the sundown before reported date.
+    * **keyword**: "Rosh" or "Hashanah" or just "rsh"  
+    * **occurs**: Between September 14th and October 14th  
+    * **range**: Every year since 3760 BC, first year of the Jewish calander  
+    * **note**: 9 days after Rosh Hashanah. Starts the sundown before reported date.
     
 15. **Columbus Day**
 
-    **keyword**: "Columbus" or just "cbd"  
-    **occurs**: Second Monday in October  
-    **range**: Every year since 1971 via the Uniform Monday Holiday Act
+    * **keyword**: "Columbus" or just "cbd"  
+    * **occurs**: Second Monday in October  
+    * **range**: Every year since 1971 via the Uniform Monday Holiday Act
 
 16. **Halloween**
 
-    **keyword**: "Halloween" or just "hlw"  
-    **occurs**: First Monday in September  
-    **range**: Every year since 1911 (when the holiday became commonly celebrated)
+    * **keyword**: "Halloween" or just "hlw"  
+    * **occurs**: First Monday in September  
+    * **range**: Every year since 1911 (when the holiday became commonly celebrated)
     
  17. **Election Day**
  
@@ -182,21 +182,21 @@ The following Holidays are implemented:
     
  18. **Veteran's Day**
 
-    **keyword**: "Veterans" or "veteran" or just "vtd"  
-    **occurs**: November 11th  
-    **range**: Every year since 1919 (after WW1)
+    * **keyword**: "Veterans" or "veteran" or just "vtd"  
+    * **occurs**: November 11th  
+    * **range**: Every year since 1919 (after WW1)
     
  19. **Thanksgiving Day**
  
-    **keyword**: "Thanksgiving" or just "tgd"  
-    **occurs**: Fourth Thursday in November  
-    **range**: Every year since 1863, when it was made a national holiday
+    * **keyword**: "Thanksgiving" or just "tgd"  
+    * **occurs**: Fourth Thursday in November  
+    * **range**: Every year since 1863, when it was made a national holiday
     
  20. **Christmas Day**
 
-    **keyword**: "christmas" or just "chr"  
-    **occurs**: December 25th  
-    **range**: Every year since the start of the common era (very generally speaking)
+    * **keyword**: "christmas" or just "chr"  
+    * **occurs**: December 25th  
+    * **range**: Every year since the start of the common era (very generally speaking)
 
 Finally, the holiday keyword "all" will put all of that year's holidays on to the queue and report them all to the terminal:
 
