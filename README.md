@@ -30,6 +30,8 @@ The output looks like this:
 
 What if a user enters a date that turns out to be a holiday? DoomsdayCalc can recognize these dates are will report back the significance. For example:
 
+What about older dates? The famous Battle of Hastings between the Normans and the Anglo-Saxons occured on a Saturday, October 14th, 1066. Does DoomsdayCalc get it right?
+
 ## Options for Date Formatting
 
 There are three ways for users to input dates.
@@ -96,7 +98,7 @@ The following Holidays are implemented:
 
     **keyword**: "Leap Day" or "leap" or just "lpd"  
     **occurs**: Feburary 29th  
-    **range**: In Gregorian calander, every four years except every year divisible by 100, but including years divisible by both 100 and 4. In the Julian calander it is simply every fout years.
+    **range**: In Gregorian calander, every four years except every year divisible by 100, but including years divisible by both 100 and 400. In the Julian calander it is simply every four years.
     
 7. **Good Friday**
 
@@ -160,7 +162,7 @@ The following Holidays are implemented:
 
     **keyword**: "Halloween" or just "hlw"  
     **occurs**: First Monday in September  
-    **range**: Every year since 1911 (when the holiday became commonly celebrated)  
+    **range**: Every year since 1911 (when the holiday became commonly celebrated)
     
  17. **Election Day**
 
@@ -190,14 +192,18 @@ Finally, the holiday keyword "all" will put all of that year's holidays on to th
 
 ## The Julian-Gregorian switch
 
+In October, 1582, Pope Gregory XIII reformed the Julian calander into the Gregorian calander that we use today. The one main difference bwtee the two calanders is the number of leap days. Leap days in the Julian Calander happen ever four years, which is too often. The Gregorian calander corrects this by removing leap days from every year divisible by 100 but not 400.
 
+In order to facilitate the switch, 10 days were omitted from the calander between October 4th, 1582 and October 15th. While the new calander was slowly adopted across Europe and eventually the world, DoomsdayCalc considers these days to not have existsed. Holidays and significant dates before October 4th, 1582 follow the Julian calander, and afterwards follow the Gregorian calander. This extends to holidays like Easter and Passover, which are calaculated slightly differently in each calander system.
 
 ## Usage
 
-`usage: ././DoomsdayCalc {-D date | -y year -m month -d day | -y year -h holiday} [-a | -b] ... [-e | -r] [-s separator]
+```
+usage: ././DoomsdayCalc {-D date | -y year -m month -d day | -y year -h holiday} [-a | -b] ... [-e | -r] [-s separator]
     -D/--Date: formatted date string e.g. 7/20/1969
     -y/--year, -m/--month, -d/--day: segmented numerical portions of a date
     -h/--holiday: when paired with a year, gives the holiday date for that year
     -a/--AD/--CE | -b/--BC/--BCE: sets the date provided as either AD or BC (AD is default)
     -e/--European | -r/--American: formats reported dates using either American or European standards (American is default)
-    -s/separator: sets the seperator between formatted dates (/  is default as in 9/13/1959)`
+    -s/separator: sets the seperator between formatted dates (/  is default as in 9/13/1959)
+```
