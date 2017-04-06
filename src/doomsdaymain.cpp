@@ -287,17 +287,17 @@ int main (int argc, char **argv)
 								dd_q.push(dd_ptr);
 								dd_ptr = new DoomsdayDate();
 							}
+							if (dd_ptr->SetHalloween(year_q.front(), ad_q.front(), true))
+							{
+								dd_q.push(dd_ptr);
+								dd_ptr = new DoomsdayDate();
+							}
 							if (dd_ptr->SetElectionDay(year_q.front(), ad_q.front(), true))
 							{
 								dd_q.push(dd_ptr);
 								dd_ptr = new DoomsdayDate();
 							}
 							if (dd_ptr->SetVeteransDay(year_q.front(), ad_q.front(), true))
-							{
-								dd_q.push(dd_ptr);
-								dd_ptr = new DoomsdayDate();
-							}
-							if (dd_ptr->SetHalloween(year_q.front(), ad_q.front(), true))
 							{
 								dd_q.push(dd_ptr);
 								dd_ptr = new DoomsdayDate();
