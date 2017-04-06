@@ -64,7 +64,7 @@ The following is an example of how all these options may be used:
 
 There are a lot of resources about John Conway's Doomsday Algorithm (also called the Doomsday Rule). It works by finding anchors, which Conway calls Doomsdays, and then counting from that anchor to find the day of the week for the provided date.
 
-Most popular articles focus on the mental counting techniques, which could be handy if you want a new trick for your next cocktail party. Otherwise the math is somewhat straightforward: use the doomsday for the century and the given year to find the doomsday year. Then find the span between the doomsday for the given month. Add these two parts and modulo by 7. It's a little tricker than that but the code is commented to shed some additional light.
+Most popular articles focus on the mental counting techniques, which could be handy if you want a trick for your next cocktail party. Otherwise the math is somewhat straightforward: use the doomsday for the century and the given year to find the doomsday year. Then find the span between day given and the doomsday for the given month. Add these two parts together and modulo by 7 to find the date. It's a little tricker than that but the code is commented to shed some additional light.
 
 For a detailed explaination on the method, [please read these lecture notes from Mathematics Prof. S.W. Graham](http://people.cst.cmich.edu/graha1sw/Pub/Doomsday/Doomsday.html).
 
@@ -219,5 +219,5 @@ usage: ././DoomsdayCalc {-D date | -y year -m month -d day | -y year -h holiday}
     -h/--holiday: when paired with a year, gives the holiday date for that year
     -a/--AD/--CE | -b/--BC/--BCE: sets the date provided as either AD or BC (AD is default)
     -e/--European | -r/--American: formats reported dates using either American or European standards (American is default)
-    -s/separator: sets the seperator between formatted dates (/  is default as in 9/13/1959)
+    -s/separator: sets the seperator between formatted dates (/ is default as in 9/13/1959)
 ```
