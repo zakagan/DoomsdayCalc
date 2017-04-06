@@ -194,10 +194,10 @@ Finally, the holiday keyword "all" will put all of that year's holidays on to th
 
 ## Usage
 
-'usage: ././DoomsdayCalc {-D date | -y year -m month -d day | -y year -h holiday} [-a | -b] ... [-e | -r] [-s separator]
+`usage: ././DoomsdayCalc {-D date | -y year -m month -d day | -y year -h holiday} [-a | -b] ... [-e | -r] [-s separator]
     -D/--Date: formatted date string e.g. 7/20/1969
     -y/--year, -m/--month, -d/--day: segmented numerical portions of a date
     -h/--holiday: when paired with a year, gives the holiday date for that year
     -a/--AD/--CE | -b/--BC/--BCE: sets the date provided as either AD or BC (AD is default)
     -e/--European | -r/--American: formats reported dates using either American or European standards (American is default)
-    -s/separator: sets the seperator between formatted dates (/  is default as in 9/13/1959)'
+    -s/separator: sets the seperator between formatted dates (/  is default as in 9/13/1959)`
