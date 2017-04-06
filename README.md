@@ -2,7 +2,7 @@
 
 This project implements John Conway's Doomsday algorithm to find the day of the week for user provided dates. Dates are parsed from the command line using the getopt standard, with several options for entering dates. When multiple dates are provided the number of days between dates is reported.
 
-I started with some code from [this old page on code project](https://www.codeproject.com/articles/2501/any-day-of-the-week-using-the-doomsday-rule). I noticed some issues and decided to build a more complete version of what orginal author Paul J. Weiss uploaded. No built-in date or time libraries have been used. The programming behind this project is broken into two main parts:
+I started with some basic code from [a 2002 page on Code Project](https://www.codeproject.com/articles/2501/any-day-of-the-week-using-the-doomsday-rule). I noticed some issues and decided to build a more complete version of what orginal author Paul J. Weiss uploaded. No built-in date or time libraries have been used. The programming behind this project is broken into two main parts:
 
 1. Parsing and organizing user provided date formats
 
@@ -14,17 +14,21 @@ These two elements come together to handle holidays. Some holidays occur on spec
 
 How many days are there between Thanksgiving and Christmas? While Christmas is always on Dec 25th, Thanksgiving falls on the 4th Thursday in November. That means the traditional Christmas season doesn't have a fixed length, it varies from year to year.
 
-This question can be answered by DoomsdayCalc for any provided year:
+This question can be answered by DoomsdayCalc for any provided year.
 
 `./DoomsdayCalc -y 2017 -h Thanksgiving -y 2017 -h Christmas`
 
-These series of inputs leads the program to crate two DoomsdayDate objects, one for Thanksgiving 2017 and one for Christmas 2017. Each object stores it's date, significance (if it's a holiday and if so what holiday), and day of the week. Then this information is reported back to the user, along with the number of days difference between the two dates.
+The output looks like this:
+
+These series of inputs leads the program to create two DoomsdayDate objects, one for Thanksgiving 2017 and one for Christmas 2017. Each object stores it's date, significance (if it's a holiday and if so what holiday), and day of the week. Then this information is reported back to the user, along with the number of days difference between the two dates.
 
 But DoomsdayCalc can handle a lot more than just two dates at a time. A priority queue organizes the DoomsdayDate objects into chronlogical order, and they are reported back accordingly along with the days between them. By doing this we can find the span of holiday seasons across different years.
 
 `./DoomsdayCalc -y 2017 -h Thanksgiving -y 2016 -h Thanksgiving -y 2015  -h Thanksgiving -y 2017 -h Christmas -y 2016 -h Christmas -y 2015 -h Christmas`
 
-What if a user enters a date that turns out to be a holiday? DoomsdayCalc can recognize these dates are will report back the significance.
+The output looks like this:
+
+What if a user enters a date that turns out to be a holiday? DoomsdayCalc can recognize these dates are will report back the significance. For example:
 
 ## Options for Date Formatting
 
@@ -32,7 +36,7 @@ There are three ways for users to input dates.
 
 1. A standard formatted date e.g. 7/20/1969. Slashes do not need to be used as seperators, since DoomsdayCalc uses a regex expression to extract date information. However, some non-numerical seperator is required. This format uses the -D flag or --Date flag.
 
-2. A segmented dat e.g. -d 20 -m 20 -y 1969. This format allows the user to explicitly list each indvigual elements of the date being inputted, where the -d flag takes in the day of the month, the -m flag takes in the month, and the -y flag takes in the year. These flags also have the following longer options, respectively: --day, --month, --year.
+2. A segmented dat e.g. -d 20 -m 20 -y 1969. This format allows the user to explicitly list each indvigual elements of the date being inputted, where the -d flag takes in the day of the month, the -m flag takes in the month, and the -y flag takes in the year. These flags also have the following longer options, respectively: --day, --month, --year. They do not need to be provided in any particular order.
 
 3. A year and holiday pair, as shown in the previous section. Give any holiday string using the flag -h or the longer flag --holiday. A list of implamented holidays is provided below.
 
@@ -181,3 +185,19 @@ The following Holidays are implemented:
     **keyword**: "christmas" or just "chr"  
     **occurs**: December 25th  
     **range**: Every year since the start of the common era (very generally speaking)
+    
+Finally, the holiday keyword "all" will put all of that year's holidays on to the queue, and report them all to the terminal:
+
+## The Julian-Gregorian switch
+
+
+
+## Usage
+
+'usage: ././DoomsdayCalc {-D date | -y year -m month -d day | -y year -h holiday} [-a | -b] ... [-e | -r] [-s separator]
+    -D/--Date: formatted date string e.g. 7/20/1969
+    -y/--year, -m/--month, -d/--day: segmented numerical portions of a date
+    -h/--holiday: when paired with a year, gives the holiday date for that year
+    -a/--AD/--CE | -b/--BC/--BCE: sets the date provided as either AD or BC (AD is default)
+    -e/--European | -r/--American: formats reported dates using either American or European standards (American is default)
+    -s/separator: sets the seperator between formatted dates (/  is default as in 9/13/1959)'
