@@ -1,14 +1,14 @@
 # DoomsdayCalc
 
-This project implements John Conway's Doomsday algoritm to find the day of the weekfor user provided dates. Dates are parsed from the command line using the getopt standard, with several options for entering dates. When multiple dates are provided the number of days between dates is reported.
+This project implements John Conway's Doomsday algorithm to find the day of the week for user provided dates. Dates are parsed from the command line using the getopt standard, with several options for entering dates. When multiple dates are provided the number of days between dates is reported.
 
-No built-in date or time libraries have been used. The programming behind this project is broken into two main parts:
+I started with some code from [this old page on code project](https://www.codeproject.com/articles/2501/any-day-of-the-week-using-the-doomsday-rule). I noticed some issues and decided to build a more complete version of what orginal author Paul J. Weiss uploaded. No built-in date or time libraries have been used. The programming behind this project is broken into two main parts:
 
 1. Parsing and organizing user provided date formats
 
 2. Processing them to find the day of the week and distance between dates.
 
-These two elements come together to handle holidays. Some holidays occur on specifics days of the weeek, like Easter Sunday or Memorial Day Monday. Users can provide a year and a holiday and DoomsdayCalc will find the date where that holiday falls in that year, along with the day of the week. If the user enters in a date that turns out to be a holiday, DoomsdayCalc will recognize it as well.
+These two elements come together to handle holidays. Some holidays occur on specifics days of the weeek rather than specific dates, like Easter Sunday or Memorial Day Monday. Users can provide a year and a holiday and DoomsdayCalc will find the date where that holiday falls in that year, along with the day of the week. If the user enters in a date that turns out to be a holiday, DoomsdayCalc will recognize it as well.
 
 ## Example Problem
 
@@ -24,11 +24,13 @@ But DoomsdayCalc can handle a lot more than just two dates at a time. A priority
 
 `./DoomsdayCalc -y 2017 -h Thanksgiving -y 2016 -h Thanksgiving -y 2015  -h Thanksgiving -y 2017 -h Christmas -y 2016 -h Christmas -y 2015 -h Christmas`
 
+What if a user enters a date that turns out to be a holiday? DoomsdayCalc can recognize these dates are will report back the significance.
+
 ## Options for Date Formatting
 
 There are three ways for users to input dates.
 
-1. A standard formatted date e.g. 7/20/1969. Slashes do not need to be used as seperators, since DoomsdayCalc uses a regex expression to extract date information. This format uses the -D flag or --Date flag.
+1. A standard formatted date e.g. 7/20/1969. Slashes do not need to be used as seperators, since DoomsdayCalc uses a regex expression to extract date information. However, some non-numerical seperator is required. This format uses the -D flag or --Date flag.
 
 2. A segmented dat e.g. -d 20 -m 20 -y 1969. This format allows the user to explicitly list each indvigual elements of the date being inputted, where the -d flag takes in the day of the month, the -m flag takes in the month, and the -y flag takes in the year. These flags also have the following longer options, respectively: --day, --month, --year.
 
@@ -46,11 +48,13 @@ The following is an example of how all these options may be used.
 
 There are lot of resources about John Conway's Doomsday Algorithm (also called the Doomsday Rule). It works by finding anchors, which Conway calls Doomsdays, and then combines them to find the day of the week for the provided date.
 
-For a detailed xplaination on the method, [please read these lecture notes from Mathematics Prof. S.W. Graham](http://people.cst.cmich.edu/graha1sw/Pub/Doomsday/Doomsday.html).
+For a detailed explaination on the method, [please read these lecture notes from Mathematics Prof. S.W. Graham](http://people.cst.cmich.edu/graha1sw/Pub/Doomsday/Doomsday.html).
 
 ## Notes on holidays
 
 Holidays strings can be provided using any number of keywords. Strings are searched for appropriate key words and the proper holidays are added to the queue of DoomsdayDate objects. The strings are not cap sensitive (in fact, all non-letter chars are stripped before searching), and shorthand 3 letter abbreviations can be used instead of a holiday's full name.
+
+For the most part, the included holidays are based on dates observed in the United States.
 
 The following Holidays are implemented:
 
@@ -152,7 +156,7 @@ The following Holidays are implemented:
 
     **keyword**: "Halloween" or just "hlw"  
     **occurs**: First Monday in September  
-    **range**: Every year since 1911 (when the holiday became commonly celebrated)
+    **range**: Every year since 1911 (when the holiday became commonly celebrated)  
     
  17. **Election Day**
 
