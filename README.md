@@ -20,6 +20,8 @@ This question can be answered by DoomsdayCalc for any provided year.
 
 The output looks like this:
 
+![alt tag](https://raw.githubusercontent.com/zakagan/DoomsdayCalc/screenshots/christmas_1.png)
+
 These series of inputs leads the program to create two DoomsdayDate objects, one for Thanksgiving 2017 and one for Christmas 2017. Each object stores it's date, significance (if it's a holiday and if so what holiday), and day of the week. Then this information is reported back to the user, along with the number of days difference between the two dates.
 
 But DoomsdayCalc can handle a lot more than just two dates at a time. A priority queue organizes the DoomsdayDate objects into chronlogical order, and they are reported back accordingly along with the days between them. By doing this we can find the span of holiday seasons across different years.
@@ -166,8 +168,8 @@ The following Holidays are implemented:
     
  17. **Election Day**
  
-    **keyword**: "election" or just "eld"  
-    **occurs**: First Tuesday in November  
+    **keyword**: "election" or just "eld"   
+    **occurs**: First Tuesday in November   
     **range**: Every year since 1845, when it was standardized
     
  18. **Veteran's Day**
@@ -175,13 +177,13 @@ The following Holidays are implemented:
     **keyword**: "Veterans" or "veteran" or just "vtd"  
     **occurs**: November 11th  
     **range**: Every year since 1919 (after WW1)
-        
+    
  19. **Thanksgiving Day**
 
     **keyword**: "Thanksgiving" or just "tgd"  
     **occurs**: Fourth Thursday in November  
     **range**: Every year since 1863, when it was made a national holiday
-        
+    
  20. **Christmas Day**
 
     **keyword**: "christmas" or just "chr"  
