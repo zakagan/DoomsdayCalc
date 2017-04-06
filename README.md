@@ -172,7 +172,7 @@ The following Holidays are implemented:
 
     **keyword**: "Halloween" or just "hlw"  
     **occurs**: First Monday in September  
-    **range**: Every year since 1911 (when the holiday became commonly celebrated)
+    **range**: Every year since 1911, when the holiday became commonly celebrated  
     
  17. **Election Day**
  
