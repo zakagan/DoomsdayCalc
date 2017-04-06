@@ -386,7 +386,7 @@ bool DoomsdayDate::SetFirst(int weekday, int month, int year, Holiday significan
 	day = 1;
 	Set_(month, day, year, true, JulianBeforeGregorian);
 	day += weekday - weekday_;	  		
-	if (day < 0) {day += 7;}					//moves dates forward to first of month                
+	if (day <= 0) {day += 7;}					//moves dates forward to first of month                
 
 	Set_(month, day, year, true, JulianBeforeGregorian, significance);
     return true;
