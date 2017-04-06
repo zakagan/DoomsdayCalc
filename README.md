@@ -165,7 +165,7 @@ The following Holidays are implemented:
     **range**: Every year since 1911 (when the holiday became commonly celebrated)
     
  17. **Election Day**
-
+ 
     **keyword**: "election" or just "eld"  
     **occurs**: First Tuesday in November  
     **range**: Every year since 1845, when it was standardized
