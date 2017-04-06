@@ -71,9 +71,13 @@ bool parseHoliday(DoomsdayDate* dd_ptr, const std::string holiday_str, const int
 		all_h_bool = true;
 		return true;
 	}
-	else if (!copy_str.compare("nyd") || copy_str.find("newyearsday") != std::string::npos)
+	else if (!copy_str.compare("nyd") || copy_str.find("newyears") != std::string::npos)
 	{
 		return dd_ptr->SetNewYears(year, ad);
+	}
+	else if (!copy_str.compare("mlk") || copy_str.find("martinlutherking") != std::string::npos)
+	{
+		return dd_ptr->SetMartinLutherKingJr(year, ad);
 	}
 	else if (!copy_str.compare("ghd") || copy_str.find("groundhog") != std::string::npos)
 	{
@@ -82,10 +86,6 @@ bool parseHoliday(DoomsdayDate* dd_ptr, const std::string holiday_str, const int
 	else if (!copy_str.compare("vld") || copy_str.find("valentine") != std::string::npos)
 	{
 		return dd_ptr->SetValentinesDay(year, ad);
-	}
-	else if (!copy_str.compare("mlk") || copy_str.find("martinlutherking") != std::string::npos)
-	{
-		return dd_ptr->SetMartinLutherKingJr(year, ad);
 	}
 	else if (!copy_str.compare("wbd") || copy_str.find("washington")!= std::string::npos \
 		|| copy_str.find("president")!= std::string::npos || copy_str.find("lincoln") != std::string::npos)
@@ -120,14 +120,6 @@ bool parseHoliday(DoomsdayDate* dd_ptr, const std::string holiday_str, const int
 	{
 		return dd_ptr->SetLaborDay(year, ad);
 	}
-	else if (!copy_str.compare("cbd") || copy_str.find("columbus") != std::string::npos)
-	{
-		return dd_ptr->SetColumbusDay(year, ad);
-	}
-	else if (!copy_str.compare("vtd") || copy_str.find("veteran") != std::string::npos)
-	{
-		return dd_ptr->SetVeteransDay(year, ad);
-	}
 	else if (!copy_str.compare("rsh") || copy_str.find("rosh") != std::string::npos \
 		||  copy_str.find("hashanah") != std::string::npos )
 	{
@@ -137,6 +129,14 @@ bool parseHoliday(DoomsdayDate* dd_ptr, const std::string holiday_str, const int
 		||  copy_str.find("kippur") != std::string::npos )
 	{
 		return dd_ptr->SetYomKippur(year, ad);
+	}
+	else if (!copy_str.compare("cbd") || copy_str.find("columbus") != std::string::npos)
+	{
+		return dd_ptr->SetColumbusDay(year, ad);
+	}
+	else if (!copy_str.compare("vtd") || copy_str.find("veteran") != std::string::npos)
+	{
+		return dd_ptr->SetVeteransDay(year, ad);
 	}
 	else if (!copy_str.compare("hlw") || copy_str.find("halloween") != std::string::npos)
 	{
@@ -150,12 +150,14 @@ bool parseHoliday(DoomsdayDate* dd_ptr, const std::string holiday_str, const int
 	{
 		return dd_ptr->SetThanksgiving(year, ad);
 	}
-	else if (!copy_str.compare("tgd") || copy_str.find("christmas") != std::string::npos)
+	else if (!copy_str.compare("chr") || copy_str.find("christmas") != std::string::npos)
 	{
 		return dd_ptr->SetChristmasDay(year, ad);
 	}
 	else
 	{
+		std::cerr << "Warning: could not recognize holiday string: " << holiday_str << std::endl;
+		
 		return false;
 	}
 }

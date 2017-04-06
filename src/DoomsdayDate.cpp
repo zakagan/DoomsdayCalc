@@ -794,7 +794,7 @@ bool DoomsdayDate::SetEaster(int year, bool ad, bool silence)
 			int p = (h + l - 7 * m + 114) % 31;
 			return Set_(n , p + 1, year, ad, true, Easter);
 		}
-		else if (year >= 325) //  // First Council of Nicaea (325 AD)
+		else if (year >= 325) // First Council of Nicaea (325 AD)
 		{
 			int a = year % 19;
 			int b = (19 * a + 15) % 30;

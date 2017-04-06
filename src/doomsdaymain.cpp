@@ -202,7 +202,7 @@ int main (int argc, char **argv)
 				break;
 
 			case 3:				// inputted holiday dates
-				if (!holiday_q.empty())
+				if (!holiday_q.empty() && !year_q.empty())
 				{
 					dd_ptr = new DoomsdayDate();
 					if (Helpers::parseHoliday(dd_ptr, holiday_q.front(), year_q.front(), ad_q.front(), all_h_bool))
@@ -317,10 +317,8 @@ int main (int argc, char **argv)
 						}
 					}
 					else
-					{
-						std::cerr << "Warning: holiday provided is invalid" << std::endl;
 						if (!warning_flag) {warning_flag =1;}
-					}
+					
 					holiday_q.pop();
 					year_q.pop();
 					ad_q.pop();
