@@ -164,6 +164,9 @@ The following Holidays are implemented:
     **occurs**: First Monday in September  
     **range**: Every year since 1911 (when the holiday became commonly celebrated)
     
+    
+    
+    
  17. **Election Day**
 
     **keyword**: "election" or just "eld"  
