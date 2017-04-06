@@ -187,7 +187,7 @@ The following Holidays are implemented:
     **range**: Every year since 1919 (after WW1)
     
  19. **Thanksgiving Day**
-
+ 
     **keyword**: "Thanksgiving" or just "tgd"  
     **occurs**: Fourth Thursday in November  
     **range**: Every year since 1863, when it was made a national holiday
