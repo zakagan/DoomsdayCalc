@@ -20,7 +20,7 @@ This question can be answered by DoomsdayCalc for any provided year.
 
 The output looks like this:
 
-https://raw.githubusercontent.com/zakagan/DoomsdayCalc/screenshots/christmas_1.png
+![alt tag][https://raw.githubusercontent.com/zakagan/DoomsdayCalc/screenshots/christmas_1.png]
 
 These series of inputs leads the program to create two DoomsdayDate objects, one for Thanksgiving 2017 and one for Christmas 2017. Each object stores it's date, significance (if it's a holiday and if so what holiday), and day of the week. Then this information is reported back to the user, along with the number of days difference between the two dates.
 
