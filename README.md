@@ -176,27 +176,27 @@ The following Holidays are implemented:
     
  17. **Election Day**
  
-    * **keyword**: "election" or just "eld"   
-    * **occurs**: First Tuesday in November   
-    * **range**: Every year since 1845, when it was standardized
+     * **keyword**: "election" or just "eld"   
+     * **occurs**: First Tuesday in November   
+     * **range**: Every year since 1845, when it was standardized
     
  18. **Veteran's Day**
-
-    * **keyword**: "Veterans" or "veteran" or just "vtd"  
-    * **occurs**: November 11th  
-    * **range**: Every year since 1919 (after WW1)
+ 
+     * **keyword**: "Veterans" or "veteran" or just "vtd"  
+     * **occurs**: November 11th  
+     * **range**: Every year since 1919 (after WW1)
     
  19. **Thanksgiving Day**
  
-    * **keyword**: "Thanksgiving" or just "tgd"  
-    * **occurs**: Fourth Thursday in November  
-    * **range**: Every year since 1863, when it was made a national holiday
+     * **keyword**: "Thanksgiving" or just "tgd"  
+     * **occurs**: Fourth Thursday in November  
+     * **range**: Every year since 1863, when it was made a national holiday
     
  20. **Christmas Day**
-
-    * **keyword**: "christmas" or just "chr"  
-    * **occurs**: December 25th  
-    * **range**: Every year since the start of the common era (very generally speaking)
+ 
+     * **keyword**: "christmas" or just "chr"  
+     * **occurs**: December 25th  
+     * **range**: Every year since the start of the common era (very generally speaking)
 
 Finally, the holiday keyword "all" will put all of that year's holidays on to the queue and report them all to the terminal:
 
