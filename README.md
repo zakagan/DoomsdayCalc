@@ -176,9 +176,9 @@ The following Holidays are implemented:
     
  17. **Election Day**
  
-    **keyword**: "election" or just "eld"   
-    **occurs**: First Tuesday in November   
-    **range**: Every year since 1845, when it was standardized
+    * **keyword**: "election" or just "eld"   
+    * **occurs**: First Tuesday in November   
+    * **range**: Every year since 1845, when it was standardized
     
  18. **Veteran's Day**
 
