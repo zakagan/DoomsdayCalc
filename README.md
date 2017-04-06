@@ -20,7 +20,7 @@ This question can be answered by DoomsdayCalc for any provided year.
 
 The output looks like this:
 
-![alt tag](https://github.com/zakagan/DoomsdayCalc/screenshots/christmas_1.png)
+![alt tag](https://github.com/zakagan/DoomsdayCalc/blob/master/screenshots/christmas_1.png)
 
 These series of inputs leads the program to create two DoomsdayDate objects, one for Thanksgiving 2017 and one for Christmas 2017. Each object stores it's date, significance (if it's a holiday and if so what holiday), and day of the week. Then this information is reported back to the user, along with the number of days difference between the two dates.
 
@@ -30,7 +30,7 @@ But DoomsdayCalc can handle a lot more than just two dates at a time. A priority
 
 The output looks like this:
 
-![alt tag](https://github.com/zakagan/DoomsdayCalc/blob/master/screenshots/christmas_2.png?raw=true)
+![alt tag](https://github.com/zakagan/DoomsdayCalc/blob/master/screenshots/christmas_2.png)
 
 What if a user enters a date that turns out to be a holiday? DoomsdayCalc can recognize these dates are will report back the significance. For example:
 
