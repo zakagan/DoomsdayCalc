@@ -8,11 +8,11 @@ I started with some basic code from [a 2002 page on Code Project](https://www.co
 
 2. Processing them to find the day of the week and distance between dates.
 
-These two elements come together to handle holidays. Some holidays occur on specifics days of the weeek rather than specific dates, like Easter Sunday or Memorial Day Monday. Users can provide a year and a holiday and DoomsdayCalc will find the date where that holiday falls in that year, along with the day of the week. If the user enters in a date that turns out to be a holiday, DoomsdayCalc will recognize it as well.
+These two elements work together in order to handle holidays. Some holidays occur on specific days of the weeek rather than specific dates, like Easter Sunday or Memorial Day Monday. Users can provide a year and a holiday and DoomsdayCalc will find the date where that holiday falls in that year, along with the day of the week. If the user enters in a date that turns out to be a holiday, DoomsdayCalc will recognize it as well.
 
 ## Example Problem
 
-How many days are there between Thanksgiving and Christmas? While Christmas is always on Dec 25th, Thanksgiving falls on the 4th Thursday in November. That means the traditional Christmas season doesn't have a fixed length, it varies from year to year.
+How many days are there between Thanksgiving and Christmas? While Christmas is always on Dec 25th, Thanksgiving falls on the fourth Thursday in November. That means the traditional Christmas season doesn't have a fixed length, it varies from year to year.
 
 This question can be answered by DoomsdayCalc for any provided year.
 
@@ -22,7 +22,7 @@ The output looks like this:
 
 ![alt tag](https://github.com/zakagan/DoomsdayCalc/blob/master/screenshots/christmas_1.png)
 
-These series of inputs leads the program to create two DoomsdayDate objects, one for Thanksgiving 2017 and one for Christmas 2017. Each object stores it's date, significance (if it's a holiday and if so what holiday), and day of the week. Then this information is reported back to the user, along with the number of days difference between the two dates.
+These inputs leads the program to create two DoomsdayDate objects, one for Thanksgiving 2017 and one for Christmas 2017. Each object stores it's date, significance (if it's a holiday and if so what holiday), and day of the week. Then this information is reported back to the user, along with the number of days difference between the two dates.
 
 But DoomsdayCalc can handle a lot more than just two dates at a time. A priority queue organizes the DoomsdayDate objects into chronlogical order, and they are reported back accordingly along with the days between them. By doing this we can find the span of holiday seasons across different years.
 
@@ -32,11 +32,11 @@ The output looks like this:
 
 ![alt tag](https://github.com/zakagan/DoomsdayCalc/blob/master/screenshots/christmas_2.png)
 
-What if a user enters a date that turns out to be a holiday? DoomsdayCalc can recognize these dates are will report back the significance. For example:
+What if a user enters a date that turns out to be a holiday? DoomsdayCalc can recognize these dates as well and will report back the significance. For example:
 
 ![alt tag](https://github.com/zakagan/DoomsdayCalc/blob/master/screenshots/easter.png)
 
-What about older dates? The famous Battle of Hastings between the Normans and the Anglo-Saxons occured on a Saturday, October 14th, 1066. Does DoomsdayCalc get it right?
+What about older dates? The famous Battle of Hastings between the Normans and the Anglo-Saxons occured on Saturday, October 14th, 1066. Does DoomsdayCalc get it right?
 
 ![alt tag](https://github.com/zakagan/DoomsdayCalc/blob/master/screenshots/hastings.png)
 
@@ -44,15 +44,15 @@ What about older dates? The famous Battle of Hastings between the Normans and th
 
 There are three ways for users to input dates.
 
-1. A standard formatted date e.g. 7/20/1969. Slashes do not need to be used as seperators, since DoomsdayCalc uses a regex expression to extract date information. However, some non-numerical seperator is required. This format uses the -D flag or --Date flag.
+1. A standard formatted date e.g. 7/20/1969. Slashes do not need to be used as seperators since DoomsdayCalc uses a regex expression to extract date information. However some non-numerical seperator is required. This format uses the -D flag or --Date flag.
 
-2. A segmented dat e.g. -d 20 -m 20 -y 1969. This format allows the user to explicitly list each indvigual elements of the date being inputted, where the -d flag takes in the day of the month, the -m flag takes in the month, and the -y flag takes in the year. These flags also have the following longer options, respectively: --day, --month, --year. They do not need to be provided in any particular order.
+2. A segmented date e.g. -d 20 -m 20 -y 1969. This format allows the user to explicitly list each indvigual element of the date being inputted, where the -d flag takes in the day of the month, the -m flag takes in the month, and the -y flag takes in the year. These flags also have the following longer options, respectively: --day, --month, --year. They do not need to be provided in any particular order.
 
 3. A year and holiday pair, as shown in the previous section. Give any holiday string using the flag -h or the longer flag --holiday. A list of implamented holidays is provided below.
 
 Each date can be augmented with the flags --BC/--BCE or --AD/--CE to specify whether or not it takes place before the start of the common era. The shorter version of these flags are -b and -a respectively. By defualt DoomsdayCalc assumes a date takes place in the common era.
 
-By defualt dates are also parsed and reported using the American date system (meaning the month is given before the day of the month). To tell DoomadayCalc to use the European system simply pass an -e flag or a longer --European flag. The user may also input -r or --American to switch back to the American system.
+Dates are parsed and reported using the American date system by default as well (meaning the month is given before the day of the month). To tell DoomadayCalc to use the European system simply pass an -e flag or a longer --European flag. The user may also input -r or --American to switch back to the American system.
 
 Finally, dates are reported with slashes ('/') as seperators by default, but this can be changed by passing a new seperator with the -s or --separator flag.
 
@@ -62,13 +62,13 @@ The following is an example of how all these options may be used:
 
 ## Notes on the Doomsday Algorithm
 
-There are lot of resources about John Conway's Doomsday Algorithm (also called the Doomsday Rule). It works by finding anchors, which Conway calls Doomsdays, and then combines them to find the day of the week for the provided date.
+There are lot of resources about John Conway's Doomsday Algorithm (also called the Doomsday Rule). It works by finding anchors, which Conway calls Doomsdays, and then counting from that anchor to find the day of the week for the provided date.
 
 For a detailed explaination on the method, [please read these lecture notes from Mathematics Prof. S.W. Graham](http://people.cst.cmich.edu/graha1sw/Pub/Doomsday/Doomsday.html).
 
 ## Notes on holidays
 
-Holidays strings can be provided using any number of keywords. Strings are searched for appropriate key words and the proper holidays are added to the queue of DoomsdayDate objects. The strings are not cap sensitive (in fact, all non-letter chars are stripped before searching), and shorthand 3 letter abbreviations can be used instead of a holiday's full name.
+Holidays strings can be provided using any number of keywords. Strings are searched for appropriate key words and the proper holidays are added to the queue of DoomsdayDate objects. The strings are not case sensitive (in fact, all non-letter chars are stripped before searching), and shorthand 3 letter abbreviations can be used instead of a holiday's full name.
 
 For the most part, the included holidays are based on dates observed in the United States.
 
@@ -197,18 +197,18 @@ The following Holidays are implemented:
     **keyword**: "christmas" or just "chr"  
     **occurs**: December 25th  
     **range**: Every year since the start of the common era (very generally speaking)
-    
-Finally, the holiday keyword "all" will put all of that year's holidays on to the queue, and report them all to the terminal:
+
+Finally, the holiday keyword "all" will put all of that year's holidays on to the queue and report them all to the terminal:
 
 ![alt tag](https://github.com/zakagan/DoomsdayCalc/blob/master/screenshots/all.png)
 
 ## The Julian-Gregorian switch
 
-In October, 1582, Pope Gregory XIII reformed the Julian calander into the Gregorian calander that we use today. The one main difference bwtee the two calanders is the number of leap days. Leap days in the Julian Calander happen ever four years, which is too often. The Gregorian calander corrects this by removing leap days from every year divisible by 100 but not 400.
+In October, 1582, Pope Gregory XIII reformed the Julian calander into the Gregorian calander that we use today. The one main difference bewteen the two calanders is the number of leap days. Leap days in the Julian Calander happen ever four years. However there are less than 365.25 days in a year, meaning there are too many leap days in the Julian system. The Gregorian calander corrects this by removing leap days from every year divisible by 100 but not 400.
 
 In order to facilitate the switch, 10 days were omitted from the calander between October 4th, 1582 and October 15th. While the new calander was slowly adopted across Europe and eventually the world, DoomsdayCalc considers these days to not have existsed. Holidays and significant dates before October 4th, 1582 follow the Julian calander, and afterwards follow the Gregorian calander. This extends to holidays like Easter and Passover, which are calaculated slightly differently in each calander system.
 
-## Usage
+## Usage message
 
 ```
 usage: ././DoomsdayCalc {-D date | -y year -m month -d day | -y year -h holiday} [-a | -b] ... [-e | -r] [-s separator]
