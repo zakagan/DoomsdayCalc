@@ -10,6 +10,14 @@ I started with some basic code from [a 2002 page on Code Project](https://www.co
 
 These two elements work together in order to handle holidays. Some holidays occur on specific days of the weeek rather than specific dates, like Easter Sunday or Memorial Day Monday. Users can provide a year and a holiday and DoomsdayCalc will find the date where that holiday falls in that year, along with the day of the week. If the user enters in a date that turns out to be a holiday, DoomsdayCalc will recognize it as well.
 
+## What is a Doomsday?
+
+This project won't tell when the world is going to end. But, if you happened to know the specific date of the end of the world, DoomsdayCalc could tell you what day of the week it will be and if it falls on any major holidays.
+
+So what is a "Doomsday" then? John Conway uses Doomsdays as term for anchor days, from which the day of the week can be calculated. For example, the century Doomsday for 2000-2099 is Tuesday. Using this information one can calculate the year Doomsday for 2017. And from there one use the Doomsday of the month in question along with the date to find the matching day of the week.
+
+This is a vary broad strokes synopsis of the Doomsday algorithm. More detail is included in a section below.
+
 ## Example Problem
 
 How many days are there between Thanksgiving and Christmas? While Christmas is always on Dec 25th, Thanksgiving falls on the fourth Thursday in November. That means the traditional Christmas season doesn't have a fixed length, it varies from year to year.
@@ -24,7 +32,7 @@ The output looks like this:
 
 These inputs leads the program to create two DoomsdayDate objects, one for Thanksgiving 2017 and one for Christmas 2017. Each object stores it's date, significance (if it's a holiday and if so what holiday), and day of the week. Then this information is reported back to the user, along with the number of days difference between the two dates.
 
-But DoomsdayCalc can handle a lot more than just two dates at a time. A priority queue organizes the DoomsdayDate objects into chronlogical order, and they are reported back accordingly along with the days between them. By doing this we can find the span of holiday seasons across different years.
+But DoomsdayCalc can handle a lot more than just two dates at a time. A priority queue organizes the DoomsdayDate objects into chronlogical order, and they are reported back accordingly along with the days between them. By doing this a user can find the span of holiday seasons across different years.
 
 `./DoomsdayCalc -y 2017 -h Thanksgiving -y 2016 -h Thanksgiving -y 2015  -h Thanksgiving -y 2017 -h Christmas -y 2016 -h Christmas -y 2015 -h Christmas`
 
@@ -62,11 +70,32 @@ The following is an example of how all these options may be used:
 
 ## Notes on the Doomsday Algorithm
 
-There are a lot of resources about John Conway's Doomsday Algorithm (also called the Doomsday Rule). It works by finding anchors, which Conway calls Doomsdays, and then counting from that anchor to find the day of the week for the provided date.
+There are a lot of resources about John Conway's Doomsday Algorithm (also called the Doomsday Rule). Most popular articles focus on the mental counting techniques, which could be handy if you want a trick for your next cocktail party. Without those tricks the math is somewhat straightforward.
 
-Most popular articles focus on the mental counting techniques, which could be handy if you want a trick for your next cocktail party. Otherwise the math is somewhat straightforward: use the doomsday for the century and the given year to find the doomsday year. Then find the span between day given and the doomsday for the given month. Add these two parts together and modulo by 7 to find the date. It's a little tricker than that but the code is commented to shed some additional light.
+Days of the week are broken down numerically as follows:
+  * Sunday = 0
+  * Monday = 1
+  * Tuesday = 2
+  * Wednesday = 3
+  * Thursday = 4
+  * Friday = 5
+  * Saturday = 6
 
-For a detailed explaination on the method, [please read these lecture notes from Mathematics Prof. S.W. Graham](http://people.cst.cmich.edu/graha1sw/Pub/Doomsday/Doomsday.html).
+Here is an abridged run through of the method using October 21st, 2015 (brief aside: what movie is made this date famous?):
+
+1. Find the soomsday of the century by taking the "century part" (e.g. 20 from 2015), then taking that modulo 4.
+  * if the resut is 0, the century Doomsday is Tuesday
+  * if the resut is 1, the century Doomsday is Sunday
+  * if the resut is 2, the century Doomsday is Friday
+  * if the resut is 3, the century Doomsday is Wednesday
+
+2. Then take the "year part" of the date (e.g. 15 from 2015), compute the following: `century doomsday + year part + floor(year part ÷ 4) % 7`. Taking the century doomsday from the previous step (Tuesday, or 2 in numerical form), we compute `2 + 15 + floor(15 ÷ 4) % 7 = 6` which is Saturday. This is the "year doomsday".
+
+3. Then find the doomsday of the month. Each of the 12 months has its own anchor day, for October it is the 10th (note that it's an anchor day of the month as opposed to the day of the week). From what was previously calculated, the 10th is a Saturday. From there clock either forward or back to the date in question. The 21st is a week and 4 days from the 10th. This can be calculated by taking `month doomsday + year doomsday % 7`. The result is 3, or Wednesday
+
+Thus October 21st, 2015 is a Wednesday. There are a few additional details (for example the method is different for pre-Gregionian dates) but the code is commented to shed some additional light.
+
+For a detailed explaination on the Doomsday rule, [please read these lecture notes from Mathematics Prof. S.W. Graham](http://people.cst.cmich.edu/graha1sw/Pub/Doomsday/Doomsday.html).
 
 ## Notes on holidays
 
@@ -206,7 +235,7 @@ Finally, the holiday keyword "all" will put all of that year's holidays on to th
 
 ## The Julian-Gregorian switch
 
-In October, 1582, Pope Gregory XIII reformed the Julian calander into the Gregorian calander that we use today. The one main difference bewteen the two calanders is the number of leap days. Leap days in the Julian Calander happen ever four years. However there are less than 365.25 days in a year, meaning there are too many leap days in the Julian system. The Gregorian calander corrects this by removing leap days from every year divisible by 100 but not 400.
+In October, 1582, Pope Gregory XIII reformed the Julian calander into the Gregorian calander used today. The one main difference bewteen the two calanders is the number of leap days. Leap days in the Julian Calander happen ever four years. However there are less than 365.25 days in a year, meaning there are too many leap days in the Julian system. The Gregorian calander corrects this by removing leap days from every year divisible by 100 but not 400.
 
 In order to facilitate the switch, 10 days were omitted from the calander between October 4th, 1582 and October 15th. While the new calander was slowly adopted across Europe and eventually the world, DoomsdayCalc considers these days to not have existsed. Holidays and significant dates before October 4th, 1582 follow the Julian calander, and afterwards follow the Gregorian calander. This extends to holidays like Easter and Passover, which are calaculated slightly differently in each calander system.
 

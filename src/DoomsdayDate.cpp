@@ -143,7 +143,6 @@ int DoomsdayDate::DetermineWeekday() const
 		int century = year_ - (year_ % 100);            // not centuary as in the 21st, currently it would be 2000 (the last 2 digits are replaced w/ zeros)
 		ddcentury = DoomsdayCentury(century);
 		if( ddcentury < 0 ) return -1; // invalid results are communicated through -1 values
-		if( ddmonth < 0 ) return -1;
 		if( ddmonth > day_ )
 		{
             x = 7 - ((ddmonth-day_) % 7 ); // translates the day to a matching day after the month's doomsday
@@ -364,9 +363,11 @@ int DoomsdayDate::DaysUntil(const DoomsdayDate& rhs) const
 	int lhs_y = ad_ ? (year_) : (-year_);
 	int rhs_y = rhs.ad_ ? (rhs.year_) : (-rhs.year_);
 	int r = rhs_y - lhs_y;
-	if (ad_ != rhs.ad_) r--; 				//correct for there being no year zero
+	if (ad_ != rhs.ad_)
+		r--; 				//correct for there being no year zero
 	r= (r * 365) + (rhs.LeapYearsSoFar() - LeapYearsSoFar()) + (rhs.DaysSoFar() - DaysSoFar());
-	if (gregorian_ != rhs.gregorian_) r -= 10;  //correct for the omitted days when the gregorian calander started
+	if (gregorian_ != rhs.gregorian_)
+		r -= 10;  //correct for the omitted days when the gregorian calander started
 
 	return r;
 }
@@ -386,7 +387,7 @@ bool DoomsdayDate::SetFirst(int weekday, int month, int year, Holiday significan
 	day = 1;
 	Set_(month, day, year, true, JulianBeforeGregorian);
 	day += weekday - weekday_;	  		
-	if (day <= 0) {day += 7;}					//moves dates forward to first of month                
+	if (day <= 0) day += 7;					//moves dates forward to first of month                
 
 	Set_(month, day, year, true, JulianBeforeGregorian, significance);
     return true;
