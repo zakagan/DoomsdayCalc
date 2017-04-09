@@ -69,7 +69,7 @@ namespace Month
 
 namespace Year
 {
-    inline bool Valid(int year) { return (year>0 /* consider adding a top cap*/); }
+    inline bool Valid(int year) { return (year>0 && year < 100000); }
 };
 
 namespace Day

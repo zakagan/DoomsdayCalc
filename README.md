@@ -2,13 +2,13 @@
 
 This project implements John Conway's Doomsday algorithm to find the day of the week for user provided dates. Dates are parsed from the command line using the getopt standard, with several options for entering dates. When multiple dates are provided the number of days between dates is reported.
 
-I started with some basic code from [a 2002 page on Code Project](https://www.codeproject.com/articles/2501/any-day-of-the-week-using-the-doomsday-rule). I noticed some issues and decided to build a more complete version of what orginal author Paul J. Weiss uploaded. No built-in date or time libraries have been used. The programming behind this project is broken into two main parts:
+I started with some basic code from [a 2002 page on Code Project](https://www.codeproject.com/articles/2501/any-day-of-the-week-using-the-doomsday-rule). I noticed some issues and decided to build a more complete version of what original author Paul J. Weiss uploaded. No built-in date or time libraries have been used. The programming behind this project is broken into two main parts:
 
 1. Parsing and organizing user provided date formats
 
 2. Processing them to find the day of the week and distance between dates.
 
-These two elements work together in order to handle holidays. Some holidays occur on specific days of the weeek rather than specific dates, like Easter Sunday or Memorial Day Monday. Users can provide a year and a holiday and DoomsdayCalc will find the date where that holiday falls in that year, along with the day of the week. If the user enters in a date that turns out to be a holiday, DoomsdayCalc will recognize it as well.
+These two elements work together in order to handle holidays. Some holidays occur on specific days of the week rather than specific dates, like Easter Sunday or Memorial Day Monday. Users can provide a year and a holiday and DoomsdayCalc will find the date where that holiday falls in that year, along with the day of the week. If the user enters in a date that turns out to be a holiday, DoomsdayCalc will recognize it as well.
 
 ## What is a Doomsday?
 
@@ -30,9 +30,9 @@ The output looks like this:
 
 ![alt tag](https://github.com/zakagan/DoomsdayCalc/blob/master/screenshots/christmas_1.png)
 
-These inputs leads the program to create two DoomsdayDate objects, one for Thanksgiving 2017 and one for Christmas 2017. Each object stores it's date, significance (if it's a holiday and if so what holiday), and day of the week. Then this information is reported back to the user, along with the number of days difference between the two dates.
+These inputs lead the program to create two DoomsdayDate objects, one for Thanksgiving 2017 and one for Christmas 2017. Each object stores it's date, significance (if it's a holiday and if so what holiday), and day of the week. Then this information is reported back to the user, along with the number of days difference between the two dates.
 
-But DoomsdayCalc can handle a lot more than just two dates at a time. A priority queue organizes the DoomsdayDate objects into chronlogical order, and they are reported back accordingly along with the days between them. By doing this a user can find the span of holiday seasons across different years.
+But DoomsdayCalc can handle a lot more than just two dates at a time. A priority queue organizes the DoomsdayDate objects into chronological order, and they are reported back accordingly along with the days between them. By doing this a user can find the span of holiday seasons across different years.
 
 `./DoomsdayCalc -y 2017 -h Thanksgiving -y 2016 -h Thanksgiving -y 2015  -h Thanksgiving -y 2017 -h Christmas -y 2016 -h Christmas -y 2015 -h Christmas`
 
@@ -44,25 +44,25 @@ What if a user enters a date that turns out to be a holiday? DoomsdayCalc can re
 
 ![alt tag](https://github.com/zakagan/DoomsdayCalc/blob/master/screenshots/easter.png)
 
-What about older dates? The famous Battle of Hastings between the Normans and the Anglo-Saxons occured on Saturday, October 14th, 1066. Does DoomsdayCalc get it right?
+What about older dates? The famous Battle of Hastings between the Normans and the Anglo-Saxons occurred on Saturday, October 14th, 1066. Does DoomsdayCalc get it right?
 
 ![alt tag](https://github.com/zakagan/DoomsdayCalc/blob/master/screenshots/hastings.png)
 
 ## Options for Date Formatting
 
-There are three ways for users to input dates.
+Any valid date between 99,999 BC and 99,999 AD can be used (note: there was no "year 0"). There are three ways for users to input dates.
 
-1. A standard formatted date e.g. 7/20/1969. Slashes do not need to be used as seperators since DoomsdayCalc uses a regex expression to extract date information. However some non-numerical seperator is required. This format uses the -D flag or --Date flag.
+1. A standard formatted date e.g. 7/20/1969. Slashes do not need to be used as separators since DoomsdayCalc uses a regex expression to extract date information. However some non-numerical separator is required. This format uses the -D flag or --Date flag.
 
-2. A segmented date e.g. -d 20 -m 20 -y 1969. This format allows the user to explicitly list each indvigual element of the date being inputted, where the -d flag takes in the day of the month, the -m flag takes in the month, and the -y flag takes in the year. These flags also have the following longer options, respectively: --day, --month, --year. They do not need to be provided in any particular order.
+2. A segmented date e.g. -d 20 -m 20 -y 1969. This format allows the user to explicitly list each individual element of the date being inputted, where the -d flag takes in the day of the month, the -m flag takes in the month, and the -y flag takes in the year. These flags also have the following longer options, respectively: --day, --month, --year. They do not need to be provided in any particular order.
 
-3. A year and holiday pair, as shown in the previous section. Give any holiday string using the flag -h or the longer flag --holiday. A list of implamented holidays is provided below.
+3. A year and holiday pair, as shown in the previous section. Give any holiday string using the flag -h or the longer flag --holiday. A list of implemented holidays is provided below.
 
-Each date can be augmented with the flags --BC/--BCE or --AD/--CE to specify whether or not it takes place before the start of the common era. The shorter version of these flags are -b and -a respectively. By defualt DoomsdayCalc assumes a date takes place in the common era.
+Each date can be augmented with the flags --BC/--BCE or --AD/--CE to specify whether or not it takes place before the start of the common era. The shorter version of these flags are -b and -a respectively. By default DoomsdayCalc assumes a date takes place in the common era.
 
 Dates are parsed and reported using the American date system by default as well (meaning the month is given before the day of the month). To tell DoomadayCalc to use the European system simply pass an -e flag or a longer --European flag. The user may also input -r or --American to switch back to the American system.
 
-Finally, dates are reported with slashes ('/') as seperators by default, but this can be changed by passing a new seperator with the -s or --separator flag.
+Finally, dates are reported with slashes ('/') as separators by default, but this can be changed by passing a new separator with the -s or --separator flag.
 
 The following is an example of how all these options may be used:
 
@@ -83,11 +83,11 @@ Days of the week are broken down numerically as follows:
 
 Here is an abridged run through of the method using October 21st, 2015 (brief aside: what movie is made this date famous?):
 
-1. Find the soomsday of the century by taking the "century part" (e.g. 20 from 2015), then taking that modulo 4.
-  * if the resut is 0, the century Doomsday is Tuesday
-  * if the resut is 1, the century Doomsday is Sunday
-  * if the resut is 2, the century Doomsday is Friday
-  * if the resut is 3, the century Doomsday is Wednesday
+1. Find the doomsday of the century by taking the "century part" (e.g. 20 from 2015), then taking that modulo 4.
+  * if the result is 0, the century Doomsday is Tuesday
+  * if the result is 1, the century Doomsday is Sunday
+  * if the result is 2, the century Doomsday is Friday
+  * if the result is 3, the century Doomsday is Wednesday
 
 2. Next take the "year part" of the date (e.g. 15 from 2015), compute the following: `century doomsday + year part + floor(year part ÷ 4) % 7`. Taking the century doomsday from the previous step (Tuesday, or 2 in numerical form), we compute `2 + 15 + floor(15 ÷ 4) % 7 = 6` which is Saturday. This is the "year doomsday".
 
@@ -95,7 +95,7 @@ Here is an abridged run through of the method using October 21st, 2015 (brief as
 
 Thus October 21st, 2015 is a Wednesday. There are a few additional details (for example the method is different for pre-Gregionian dates) but the code is commented to shed some additional light.
 
-For a detailed explaination on the Doomsday rule, [please read these lecture notes from Mathematics Prof. S.W. Graham](http://people.cst.cmich.edu/graha1sw/Pub/Doomsday/Doomsday.html).
+For a detailed explanation on the Doomsday rule, [please read these lecture notes from Mathematics Prof. S.W. Graham](http://people.cst.cmich.edu/graha1sw/Pub/Doomsday/Doomsday.html).
 
 ## Notes on holidays
 
@@ -120,26 +120,26 @@ The following Holidays are implemented:
 3. **Ground Hog Day**
 
     * **keyword**: "Ground Hog" or just "ghd"  
-    * **occurs**: Febuary 2nd  
+    * **occurs**: February 2nd  
     * **range**: Every year since 1887
     
 4. **Valentine's Day**
 
     * **keyword**: "Valentines" or "valentine" or just "vld"  
-    * **occurs**: Febuary 14th  
+    * **occurs**: February 14th  
     * **range**: Every year since 496 (using a loose interpretation of the Valentine's celebration)
     
 5. **Washington's Birthday (President's Day)**
 
     * **keyword**: "Washington" or "Lincoln" or "president" or just "wbd"  
-    * **occurs**: 3rd Monday in Feburary  
+    * **occurs**: 3rd Monday in February  
     * **range**: Every year since 1971
     
 6. **Leap Day**
 
     * **keyword**: "Leap Day" or "leap" or just "lpd"  
-    * **occurs**: Feburary 29th  
-    * **range**: In Gregorian calander, every four years except every year divisible by 100, but including years divisible by both 100 and 400. In the Julian calander it is simply every four years.
+    * **occurs**: February 29th  
+    * **range**: In Gregorian calendar, every four years except every year divisible by 100, but including years divisible by both 100 and 400. In the Julian calendar it is simply every four years.
     
 7. **Good Friday**
 
@@ -158,7 +158,7 @@ The following Holidays are implemented:
 
     * **keyword**: "Passover" or just "psv"  
     * **occurs**: Between March 26th and April 25th   
-    * **range**: Every year since 3760 BC, first year of the Jewish calander  
+    * **range**: Every year since 3760 BC, first year of the Jewish calendar  
     * **note**: Based on that year's Rosh Hashanah. Starts the sundown before reported date.
     
 10. **Memorial Day**
@@ -183,14 +183,14 @@ The following Holidays are implemented:
 
     * **keyword**: "Rosh" or "Hashanah" or just "rsh"  
     * **occurs**: Between September 5th and October 5th  
-    * **range**: Every year since 3760 BC, first year of the Jewish calander  
+    * **range**: Every year since 3760 BC, first year of the Jewish calendar  
     * **note**: Calculated using a variation of Gauss's method. Starts the sundown before reported date.
     
 14. **Yom Kippur**
 
     * **keyword**: "Rosh" or "Hashanah" or just "rsh"  
     * **occurs**: Between September 14th and October 14th  
-    * **range**: Every year since 3760 BC, first year of the Jewish calander  
+    * **range**: Every year since 3760 BC, first year of the Jewish calendar  
     * **note**: 9 days after Rosh Hashanah. Starts the sundown before reported date.
     
 15. **Columbus Day**
@@ -235,18 +235,18 @@ Finally, the holiday keyword "all" will put all of that year's holidays on to th
 
 ## The Julian-Gregorian switch
 
-In October, 1582, Pope Gregory XIII reformed the Julian calander into the Gregorian calander used today. The one main difference bewteen the two calanders is the number of leap days. Leap days in the Julian Calander happen ever four years. However there are less than 365.25 days in a year, meaning there are too many leap days in the Julian system. The Gregorian calander corrects this by removing leap days from every year divisible by 100 but not 400.
+In October, 1582, Pope Gregory XIII reformed the Julian calendar into the Gregorian calendar we use today. The one main difference between the two calendars is the number of leap days. Leap days in the Julian Calendar happen ever four years. However there are less than 365.25 days in a year, meaning there are too many leap days in the Julian system. The Gregorian calendar corrects this by removing leap days from every year divisible by 100 but not 400.
 
-In order to facilitate the switch, 10 days were omitted from the calander between October 4th, 1582 and October 15th. While the new calander was slowly adopted across Europe and eventually the world, DoomsdayCalc considers these days to not have existsed. Holidays and significant dates before October 4th, 1582 follow the Julian calander, and afterwards follow the Gregorian calander. This extends to holidays like Easter and Passover, which are calaculated slightly differently in each calander system.
+In order to facilitate the switch, 10 days were omitted from the calendar between October 4th, 1582 and October 15th. While the new calendar was slowly adopted across Europe and eventually the world, DoomsdayCalc considers these days to not have existed. Holidays and significant dates before October 4th, 1582 follow the Julian calendar, and afterwards follow the Gregorian calendar. This extends to holidays like Easter and Passover, which are calculated slightly differently in each calendar system.
 
 ## Usage message
 
 ```
 usage: ././DoomsdayCalc {-D date | -y year -m month -d day | -y year -h holiday} [-a | -b] ... [-e | -r] [-s separator]
     -D/--Date: formatted date string e.g. 7/20/1969
-    -y/--year, -m/--month, -d/--day: segmented numerical portions of a date
+    -y/--year, -m/--month, -d/--day: segmented numerical portions of a date. Accepted year range is 1 to 99,999 AD or BC.
     -h/--holiday: when paired with a year, gives the holiday date for that year
     -a/--AD/--CE | -b/--BC/--BCE: sets the date provided as either AD or BC (AD is default)
     -e/--European | -r/--American: formats reported dates using either American or European standards (American is default)
-    -s/separator: sets the seperator between formatted dates (/ is default as in 9/13/1959)
+    -s/separator: sets the separator between formatted dates (/ is default as in 9/13/1959)
 ```

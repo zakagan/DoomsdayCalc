@@ -165,10 +165,10 @@ bool parseHoliday(DoomsdayDate* dd_ptr, const std::string holiday_str, const int
 	{
 		std::cout << "usage: ./" << name << " {-D date | -y year -m month -d day | -y year -h holiday} [-a | -b] ... [-e | -r] [-s separator]" << std::endl;
 		std::cout << "    -D/--Date: formatted date string e.g. 7/20/1969" << std::endl;
-		std::cout << "    -y/--year, -m/--month, -d/--day: segmented numerical portions of a date" << std::endl;
+		std::cout << "    -y/--year, -m/--month, -d/--day: segmented numerical portions of a date. Accepted year range is 1 to 99,999 AD or BC." << std::endl;
 		std::cout << "    -h/--holiday: when paired with a year, gives the holiday date for that year" << std::endl;
 		std::cout << "    -a/--AD/--CE | -b/--BC/--BCE: sets the date provided as either AD or BC (AD is default)" << std::endl;
 		std::cout << "    -e/--European | -r/--American: formats reported dates using either American or European standards (American is default)" << std::endl;
-		std::cout << "    -s/separator: sets the seperator between formatted dates (/ is default as in 9/13/1959)" << std::endl;
+		std::cout << "    -s/separator: sets the separator between formatted dates (/ is default as in 9/13/1959)" << std::endl;
 	}
 }
