@@ -12,11 +12,11 @@ These two elements work together in order to handle holidays. Some holidays occu
 
 ## What is a Doomsday?
 
-This project won't tell when the world is going to end. But, if you happened to know the specific date of the end of the world, DoomsdayCalc could tell you what day of the week it will be and if it falls on any major holidays.
+This project won't tell you when the world is going to end. But, if you happened to know the specific date of the end of the world, DoomsdayCalc could tell you what day of the week it would be on and if it falls on a major holiday.
 
-So what is a "Doomsday" then? John Conway uses Doomsdays as term for anchor days, from which the day of the week can be calculated. For example, the century Doomsday for 2000-2099 is Tuesday. Using this information one can calculate the year Doomsday for 2017. And from there one use the Doomsday of the month in question along with the date to find the matching day of the week.
+So what is a "Doomsday" then? John Conway uses doomsdays as term for anchor days, from which the day of the week can be calculated. For example, the century Doomsday for 2000-2099 is Tuesday. Using this information you can calculate the year Doomsday for 2017. And from there you use the Doomsday of the month in question along with the date to find the matching day of the week.
 
-This is a vary broad strokes synopsis of the Doomsday algorithm. More detail is included in a section below.
+This is a very broad strokes synopsis of the Doomsday algorithm. More detail is included in a section below.
 
 ## Example Problem
 
@@ -89,7 +89,7 @@ Here is an abridged run through of the method using October 21st, 2015 (brief as
   * if the resut is 2, the century Doomsday is Friday
   * if the resut is 3, the century Doomsday is Wednesday
 
-2. Then take the "year part" of the date (e.g. 15 from 2015), compute the following: `century doomsday + year part + floor(year part ÷ 4) % 7`. Taking the century doomsday from the previous step (Tuesday, or 2 in numerical form), we compute `2 + 15 + floor(15 ÷ 4) % 7 = 6` which is Saturday. This is the "year doomsday".
+2. Next take the "year part" of the date (e.g. 15 from 2015), compute the following: `century doomsday + year part + floor(year part ÷ 4) % 7`. Taking the century doomsday from the previous step (Tuesday, or 2 in numerical form), we compute `2 + 15 + floor(15 ÷ 4) % 7 = 6` which is Saturday. This is the "year doomsday".
 
 3. Then find the doomsday of the month. Each of the 12 months has its own anchor day, for October it is the 10th (note that it's an anchor day of the month as opposed to the day of the week). From what was previously calculated, the 10th is a Saturday. From there clock either forward or back to the date in question. The 21st is a week and 4 days from the 10th. This can be calculated by taking `month doomsday + year doomsday % 7`. The result is 3, or Wednesday
 
